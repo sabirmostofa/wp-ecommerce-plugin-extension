@@ -5,25 +5,28 @@
 
 jQuery(document).ready(function($){
     
+    $('#date_from').datepicker();
+    $('#date_to').datepicker();
     
-        $('.widefat img').bind('click',function(evt){
+    
+        $('#show').bind('click',function(evt){
         evt.preventDefault();
-        var id =$(this).attr('class');
-        
-        var self = $(this);
+        var dateT =$('#date_to').val();
+        var dateS =$('#date_from').val();
+
         
             $.ajax({
             type :  "post",
             url : ajaxurl,
             timeout : 5000,
             data : {
-                'action' : 'city_remove',
-                'id' : id		  
+                'action' : 'com_ext',
+                'date_from' : dateS,		  
+                'date_to' : dateT		  
             },			
-            success :  function(data){               
-                if(data==1){
-                 self.parent().parent().parent().hide('slow');   
-                }
+            success :  function(data){  
+                $('#ajaxdata').html(data);
+               
             }
         })	//end of ajax	
         

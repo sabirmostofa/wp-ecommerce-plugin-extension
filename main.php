@@ -68,7 +68,7 @@ class wpEcomExtension {
                 and      date<=$to 
                 and      processed=3
                 and      discount_value>0
-                order by cnt
+                order by cnt desc
                 ");
 
         //var_dump($res);
@@ -110,7 +110,7 @@ class wpEcomExtension {
      where      logs.date>=$from and logs.date<=$to and logs.processed=3
                 
      group by   cart.name
-     order by   amount
+     order by   amount desc
          
      
 ");
@@ -193,7 +193,7 @@ class wpEcomExtension {
      where      logs.date>=$from and logs.date<=$to and logs.processed=3
                 
      group by   logs.gateway 
-     order by   price
+     order by   price desc
      
 ");
         //var_dump($res_pay);
